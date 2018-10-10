@@ -17,4 +17,4 @@ This repo contains two parts, which are focused on data wrangling : `tidyr` and 
 |  :dog: | [hw04.md](https://github.com/STAT545-UBC-students/hw04-Irissq28/blob/master/hw04.md) | 
 |  :penguin: | [Aged_15-24_employment_rate folder](https://github.com/STAT545-UBC-students/hw04-Irissq28/tree/master/data_frame)| 
 | :monkey_face:  | [image folder](https://github.com/STAT545-UBC-students/hw04-Irissq28/tree/master/figure)|
-
+| :sheep: |[figure-markdown_github](https://github.com/STAT545-UBC-students/hw04-Irissq28/tree/master/hw04_files/figure-markdown_github) |
