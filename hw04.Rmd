@@ -24,7 +24,7 @@ output:
 | NA | `separate` |
 | NA | `unite` |
 
-### An Introductin to `reshape2` and wide/long format data
+### An Introduction to `reshape2` and wide/long format data
 
 `reshape2` is an R package which makes it easy to transform data between wide and long formats.
 
@@ -37,7 +37,7 @@ Wide format data has a column fo reach variable, which is clear to read, For exa
 ## 3       59        8       83
 ```
 
-While for long format data, Generally speaking, one column(vairable) contains all variables the other column(value) is the matched data.For example: 
+While for long format data, Generally speaking, one column(variable) contains all variables the other column(value) is the matched data.For example: 
 But long-format data unnecessarily only two columns, and in reality, you need long format data more commonly than wide format data, such as `ggplot2` requires long format data.
 
 ```{r Long format data example}
@@ -71,7 +71,7 @@ library(tidyverse)
 library(ggplot2)
 ```
 
-By default, `melt` treat all columns with numeric values as variable with values. if you want to control the cloumn names in the long format data, try `id.vars` and `variable.name`, also `value.name`
+By default, `melt` treat all columns with numeric values as the variable with values. if you want to control the column names in the long format data, try `id.vars` and `variable.name`, also `value.name`
 
 ```{r melt function}
 #original `gapminder` data frame is wide format data
@@ -119,7 +119,7 @@ grid.arrange(melted_table, casted_table,
 If it isn't clear of what happened here, then take a look of this illustration:
 the blue box area indicates ID variable that we want to represent individual rows, and the red box area represents variable name that we want to swing into different column names.
 
-<img align ="center" src="https://github.com/STAT545-UBC-students/hw04-Irissq28/blob/master/figure/illustration%20of%20the%20dcast%20function.png" width="700" height="600"/>
+<img align ="center" src="https://github.com/STAT545-UBC-students/hw04-Irissq28/blob/master/figure/illustration%20of%20the%20dcast%20function.png" width="500" height="400"/>
 
 
 Another case not mentioned in our previous examples, and it's might to make mistake here. If you cast a dataset in which there is more than one value per data cell, For example, we won't take 'country' as an ID variable. 
@@ -145,22 +145,22 @@ dcast(melted1, continent + year ~ variable,
       fun.aggregate = mean , na.rm = TRUE)
 ```
 
-### An Introductin to `tidyr`
+### An Introduction to `tidyr`
 
 `tidyr` package provides fundamental functions for cleaning, processing and manipulating data.
 
 `tidyr`
 
-  * gather( )
-  * spread( )
-  * separate( )
-  * unite( )
+  * gather( ) data from wide to long format
+  * spread( ) is used to transform data from long to wide format
+  * separate( ) turns a pair of key:value columns into a set of tidy columns
+  * unite( ) combines multiple columns into a single column
 
 ### `gather` in `tidyr` package
 
 `gather` takes multiple columns, and gathers them into key-value pairs: it makes wide data longer.
 
-To explore the `gather` funcitons, we still use the previous data frame. Based on the illustrations of `melt`, the `gather` is much easier to understand, they all make wide data format longer.
+To explore the `gather` functions, we still use the previous data frame. Based on the illustrations of `melt`, the `gather` is much easier to understand, they all make wide data format longer.
 
 ```{r gather function}
 library(tidyr)
@@ -179,7 +179,7 @@ grid.arrange(casted_table, longfd_table,
 
 ### `spread` in `tidyr` package
 
-`spread` takes two columns (key & value) and spreads in to multiple columns, it makes long data wider. Still we used last `longdf` data frame. Based on the illustrations of `dcast`, the `spreak` is also easy to understand. 
+`spread` takes two columns (key & value) and spreads into multiple columns, it makes long data wider. Still we used last `longdf` data frame. Based on the illustrations of `dcast`, the `spread` is also easy to understand. 
 
 ```{r spread function}
 # turn the long format data into wide format data
@@ -194,8 +194,7 @@ grid.arrange(longfd_table, spread_table,
 
 ### `separate` in `tidyr` package
 
-`separate` can turn a single charachter into multiple columns by splitting a single variable whenever a seperator charachter appears. Many times a single column will capture mutiple varables, or even parts of a variable you don't just care about. 
-
+`separate` can turn a single character into multiple columns by splitting a single variable whenever a separator character appears. Many times a single column will capture multiple variables, or even parts of a variable you don't just care about. 
 By default, `separate` will split values wherever a non-alphanumeric character appears. Non-alphanumeric characters are characters that are neither a number nor a letter. For example, in the code below, separate() split the values of `lifeExp` at the decimal point.
 
 ```{r separate function 1}
@@ -208,7 +207,7 @@ grid.arrange(casted_table, sparate_table,
              nrow = 2, top = "Application of the separate function")
 ```
 
-If you also want to use a specific character to seperate a column, you can pass the character to the `sep` argument of `separate()`. For example.
+If you also want to use a specific character to separate a column, you can pass the character to the `sep` argument of `separate()`. For example.
 
 ```{r separate function 2}
 # We used the data frame from `cast` functions in previous section.
@@ -226,7 +225,7 @@ grid.arrange(casted_table, separatelifeExp_table,
              nrow = 2, top = "Application of the separate function by using a specific character")
 ```
 
-You can also pass an integer to sep, then `separate()` will interpret the integer at the position number(start at 1 at the far-left of the strings; negative value start at -1 at the far-right of the strings), For example, we use `sep = 2` to separate the last 2 digits of each year.
+You can also pass an integer to sep, then `separate()` will interpret the integer at the position number(start at 1 at the far left of the strings; negative value start at -1 at the far-right of the strings), For example, we use `sep = 2` to separate the last 2 digits of each year.
 
 ```{r separate function 3}
 # We used the data frame from `cast` functions in previous section.
@@ -283,7 +282,7 @@ grid.arrange(separateyear_table, uniteyear_table,
 In this part, I used data available on [Gapminder's data](https://www.gapminder.org/data/) webpage, mainly focused on [Aged 15-24 employment rate](https://www.gapminder.org/data/), which describes the percentage of total population, age group 15-24, that has been employed during the given year.
 
 ```{r read csv}
-employment_rate <- read.csv("/Users/Anan/Desktop/git/hw04-Irissq28/aged_15_24_employment_rate_percent.csv")
+employment_rate <- read.csv("/Users/Anan/Desktop/git/hw04-Irissq28/data_frame/aged_15_24_employment_rate_percent.csv")
 ```
 
 To get an overview of the **Aged 15-24 employment rate** database.
@@ -294,7 +293,7 @@ head(employment_rate)
 
 ### Tidy the new data frame
 
-We want to filter the **Aged 15-24 employment rate** in the year of 2007, then it's possible to find the relationship between gdpPercap and employment rate in 2007. From our previous discussion, we could use `gather` in `tidyr` package. After reshape the data, we now get a new dataframe.
+We want to filter the **Aged 15-24 employment rate** in the year 2007, then it's possible to find the relationship between gdpPercap and employment rate in 2007. From our previous discussion, we could use `gather` in `tidyr` package. After reshape the data, we now get a new data frame.
 
 ```{r gather function of employment rate}
 emprate_gathered <- employment_rate %>%
@@ -302,9 +301,13 @@ emprate_gathered <- employment_rate %>%
 head(emprate_gathered,n=6)
 ```
 
+Before combining data from two data frames, let's take a look at how different joins work, the cheatsheet is from [RStudio cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+<img align ="center" src="http://ohi-science.org/data-science-training/img/rstudio-cheatsheet-combine-options1.png" width="500" height="400"/>
+
 ### left_join()
 
-Use `filter()` function in `dplyr`, data in 2007 from `gapminder` and `employment rate` is both filtered. Now we joining them together. `left_join()` keeps everything from the left table and matches as much as it can from the right table.
+Use `filter()` function in `dplyr`, data in 2007 from `gapminder` and `employment rate` is both filtered. Now we joining them together. `left_join()` keeps everything from the left table(gapminder2007) and matches as much as it can from the right table(emprate_gathered2007).
 
 ```{r filter the two dataframe and left join}
 gapminder2007 <- gapminder %>%
@@ -318,7 +321,7 @@ grid.arrange(tableGrob( head( left_2007, 12 ),theme = tt, rows = NULL),
 
 ### right_join()
 
-And `right_join()` keeps everything from the right table and matches as much as it can from the left table.
+And `right_join()` keeps everything from the right table(emprate_gathered2007) and matches as much as it can from the left table(gapminder2007).
 
 ```{r right join}
 right_2007 <- right_join(gapminder2007,emprate_gathered2007,by = "country")
@@ -328,7 +331,7 @@ grid.arrange(tableGrob( head( right_2007, 12 ),theme = tt, rows = NULL),
 
 ### full_join()
 
-`full_join()` keeps all observations from both tables.
+`full_join()` keeps all observations from both tables(gapminder2007,emprate_gathered2007).
 
 ```{r full join}
 full_2007 <- full_join(gapminder2007,emprate_gathered2007,by = "country")
